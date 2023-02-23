@@ -1,7 +1,8 @@
 import { Checkbox, FormControlLabel } from "@mui/material"
 import { Controller } from "react-hook-form"
+import ErrorMessage from "./ErrorMessage"
 
-const CheckboxFields = ({ name, control }) => {
+const CheckboxFields = ({ name, control, errors }) => {
     return (
         <>
             <Controller
@@ -11,6 +12,8 @@ const CheckboxFields = ({ name, control }) => {
                     <FormControlLabel control={<Checkbox {...field} required />} label='I Agree to MyApp Terms and Privacy Policy' />
                 )}
             />
+            {errors[name] ? <ErrorMessage message={errors[name].message} /> : null}
+
         </>
     )
 }
